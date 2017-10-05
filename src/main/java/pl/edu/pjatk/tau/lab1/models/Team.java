@@ -1,14 +1,15 @@
 package pl.edu.pjatk.tau.lab1.models;
 
+import pl.edu.pjatk.tau.lab1.service.TeamService;
+
 /**
  * Created by maciek on 01.10.17.
  */
-public class Team {
+public class Team  implements TeamService{
     private int teamId;
     private String name;
     private String city;
     private String liga;
-//    enum categoryGame;
 
     public String getName() {
         return name;
@@ -35,4 +36,23 @@ public class Team {
     }
 
 
+    public void create(int teamId, String name, String liga, String city) {
+
+    }
+
+    public void delete(int id) {
+
+    }
+
+    public void read() {
+
+    }
+
+    public void read(int id) {
+
+    }
+
+    public void update(int id) {
+
+    }
 }
