@@ -1,16 +1,9 @@
 package pl.edu.pjatk.tau.lab1.models;
 
-import pl.edu.pjatk.tau.lab1.service.TeamService;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.sun.corba.se.impl.util.RepositoryId.cache;
-
 /**
  * Created by maciek on 01.10.17.
  */
-public class Team implements TeamService {
+public class Team  {
     private String name;
     private String city;
     private String liga;
@@ -27,16 +20,6 @@ public class Team implements TeamService {
 
     }
 
-    public Team create(Team a) {
-        a.getTeamId();
-        records().add(a);
-        return a;
-    }
-
-    public List<Team> records() {
-        List<Team> team = new ArrayList<>();
-        return team;
-    }
     public int getTeamId() {
         return id;
     }
@@ -70,26 +53,5 @@ public class Team implements TeamService {
         this.liga = liga;
     }
 
-    @Override
-    public Team delete(Team a) {
-//        a.getTeamId();
-        records().remove(a);
-        return a;
-    }
-
-
-    @Override
-    public Team read(Team a) {
-        a.getTeamId();
-        return a;
-
-
-    }
-
-    @Override
-    public Team update(Team a) {
-       // a.setName(getTeamId());
-        return a;
-    }
 
 }

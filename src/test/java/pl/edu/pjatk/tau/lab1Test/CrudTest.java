@@ -31,13 +31,16 @@ public class CrudTest {
 
     @Test
     public void verifyValidUpdate(){
+        Team a = testTeam.create(crTeamek);
+        a.setName("Tapla");
+        Assert.assertEquals("Tapla", a.getName());
 
     }
     @Test
     public void verifyValidDelete(){
-        Team a = crTeamek.create(crTeamek);
+        Team a = testTeam.create(crTeamek);
         Assert.assertNotNull(a);
-        crTeamek.delete(a);
+        testTeam.delete(a);
         Assert.assertNotNull(a);
     }
     @Test
@@ -45,8 +48,6 @@ public class CrudTest {
         Team a = testTeam.create(crTeamek);
         Assert.assertEquals("Gumed", a.getName());
         Assert.assertEquals("Iliga", a.getLiga());
-
-
     }
 
 
