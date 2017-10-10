@@ -1,8 +1,6 @@
 package pl.edu.pjatk.tau.lab1Test;
 
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import pl.edu.pjatk.tau.lab1.models.Team;
 import pl.edu.pjatk.tau.lab1.service.TeamImpl;
 import pl.edu.pjatk.tau.lab1.service.TeamService;
@@ -20,13 +18,13 @@ public class CrudTest {
         testTeam = new TeamImpl();
     }
 
+
     @Test
     public void verifyValidCreate(){
         Team a = testTeam.create(crTeamek);
         Assert.assertEquals(1, a.getTeamId());
         Assert.assertEquals("Gdynia", a.getCity());
         Assert.assertEquals("Iliga", a.getLiga());
-
     }
 
     @Test
@@ -36,12 +34,12 @@ public class CrudTest {
         Assert.assertEquals("Tapla", a.getName());
 
     }
+
     @Test
-    public void verifyValidDelete(){
+    public void verifValidaDelete(){
         Team a = testTeam.create(crTeamek);
-        Assert.assertNotNull(a);
         testTeam.delete(a);
-        Assert.assertNotNull(a);
+        Assert.assertTrue(testTeam.giveListSize());
     }
     @Test
     public void verifyValidRead(){
@@ -49,6 +47,4 @@ public class CrudTest {
         Assert.assertEquals("Gumed", a.getName());
         Assert.assertEquals("Iliga", a.getLiga());
     }
-
-
 }
