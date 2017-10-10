@@ -14,15 +14,13 @@ public class TeamImpl extends Team implements TeamService {
 
     }
 
-    public List<Team> records() {
-        List<Team> team = new ArrayList<>();
-        return team;
-    }
+    static List<Team> records = new ArrayList<>();
+
 
     @Override
-    public Team delete(Team a) {
-        records().remove(a.getTeamId());
-        return a;
+    public void delete(Team a) {
+        records.remove(a.getTeamId());
+                //(a.getTeamId());
 
     }
 
@@ -34,13 +32,13 @@ public class TeamImpl extends Team implements TeamService {
 
     @Override
     public Team update(Team a) {
-        records().set(a.getTeamId(), a);
+        records.set(a.getTeamId(), a);
          return a;
     }
 
     public Team create(Team a) {
         a.getTeamId();
-        records().add(a);
+        records.add(a);
         return a;
     }
 

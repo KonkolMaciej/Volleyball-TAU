@@ -9,8 +9,7 @@ import java.util.List;
  */
 public interface TeamService <T> {
      Team  create(Team a);
-     Team  delete(Team a);
+     void   delete(Team a);
      Team  read(Team a);
      Team  update(Team a);
-     public List<Team> records();
 }
