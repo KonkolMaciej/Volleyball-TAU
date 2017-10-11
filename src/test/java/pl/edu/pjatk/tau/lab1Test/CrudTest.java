@@ -31,6 +31,7 @@ public class CrudTest {
     public void verifyValidUpdate(){
         Team a = testTeam.create(crTeamek);
         a.setName("Tapla");
+        testTeam.update(a);
         Assert.assertEquals("Tapla", a.getName());
 
     }

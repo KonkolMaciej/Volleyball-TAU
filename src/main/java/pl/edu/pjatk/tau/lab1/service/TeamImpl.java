@@ -16,10 +16,6 @@ public class TeamImpl extends Team implements TeamService {
 
     static List<Team> records = new ArrayList<>();
 
-//     public  List<Team> records() {
-//         List<Team> team = new ArrayList<>();
-//        return team;}
-
     @Override
     public void delete(Team a) {
         records.remove(a);
