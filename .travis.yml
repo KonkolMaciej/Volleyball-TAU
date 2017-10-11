@@ -22,3 +22,5 @@ jdk:
 
 os:
 - linux
+
+script: mvn test 
