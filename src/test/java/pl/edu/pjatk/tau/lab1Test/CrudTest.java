@@ -40,7 +40,7 @@ public class CrudTest {
     public void verifValidaDelete(){
         Team a = testTeam.create(crTeamek);
         testTeam.delete(a);
-        Assert.assertTrue(testTeam.giveListSize());
+        Assert.assertTrue(testTeam.isEmpty());
     }
     @Test
     public void verifyValidRead(){

@@ -39,7 +39,7 @@ public class TeamImpl extends Team implements TeamService {
         return a;
     }
 
-        public  boolean giveListSize()
+    public boolean isEmpty()
     {
         if(records.isEmpty())
             return true;
