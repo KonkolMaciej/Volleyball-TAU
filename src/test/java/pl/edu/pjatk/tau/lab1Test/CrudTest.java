@@ -2,6 +2,7 @@ package pl.edu.pjatk.tau.lab1Test;
 
 import org.junit.*;
 import pl.edu.pjatk.tau.lab1.models.Team;
+import pl.edu.pjatk.tau.lab1.service.ExceptionRecord;
 import pl.edu.pjatk.tau.lab1.service.TeamImpl;
 import pl.edu.pjatk.tau.lab1.service.TeamService;
 
@@ -12,10 +13,12 @@ public class CrudTest {
     private static TeamService testTeam;
     private static TeamService testTeamEx;
     private static Team crTeamek;
+    private static Team crTeamek2;
 
     @BeforeClass
     public static void setUp(){
         crTeamek = new Team(1,"Gumed","Gdynia","Iliga");
+        crTeamek2 = new Team(4,"Gumed","Gdynia","Iliga");
         testTeam = new TeamImpl();
     }
 
@@ -29,11 +32,11 @@ public class CrudTest {
     }
 
     @Test
-    public void verifyValidUpdate(){
+    public void verifyValidUpdate() throws ExceptionRecord{
         Team a = testTeam.create(crTeamek);
         a.setName("Tapla");
-        testTeam.update(a);
-        Assert.assertEquals("Tapla", a.getName());
+        a = testTeam.updaterec(new Team(3, "gdynia", "tttt","bbbb"));
+        Assert.assertEquals("gdynia", a.getName());
 
     }
 
@@ -50,11 +53,14 @@ public class CrudTest {
         Assert.assertEquals("Iliga", a.getLiga());
     }
 
-    @Test(expected = AssertionError.class)
-    public void verifyValidCreateException(){
+    @Test(expected = ExceptionRecord.class)
+    public void verifyValidUpdateException() throws ExceptionRecord{
             testTeamEx = new TeamImpl();
-            Team b = testTeam.create(crTeamek);
-            Assert.assertEquals("aaaa", b.getName());
+            Team c = testTeamEx.create(crTeamek2);
+            testTeamEx.update(new Team(2, "aaaa", "tttt","bbbb"));
+
+
+
 
 
     }

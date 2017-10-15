@@ -5,9 +5,6 @@ import pl.edu.pjatk.tau.lab1.models.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by maciek on 09.10.17.
- */
 public class TeamImpl extends Team implements TeamService {
 
     public TeamImpl() {
@@ -16,6 +13,11 @@ public class TeamImpl extends Team implements TeamService {
 
     static List<Team> records = new ArrayList<>();
 
+
+    public Team updaterec(Team a) {
+        records.set(a.getTeamId(), a);
+        return a;
+    }
     @Override
     public void delete(Team a) {
         records.remove(a);
@@ -28,10 +30,16 @@ public class TeamImpl extends Team implements TeamService {
     }
 
     @Override
-    public Team update(Team a) {
+    public Team update(Team a) throws ExceptionRecord {
+        if(!this.exist()){
+            throw new ExceptionRecord(ExceptionRecord.ExceptionRecord());
+        }
+        else{
         records.set(a.getTeamId(), a);
-         return a;
+        return a;
+        }
     }
+
     @Override
     public Team create(Team a) {
         a.getTeamId();
@@ -47,4 +55,13 @@ public class TeamImpl extends Team implements TeamService {
             return false;
     }
 
+    public  boolean exist(){
+        for (Team t :records)
+        {
+            if(t.getTeamId()==this.getTeamId())
+            return true;
+        }
+        return false;
+
+    }
 }
