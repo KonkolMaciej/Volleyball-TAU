@@ -10,6 +10,7 @@ import pl.edu.pjatk.tau.lab1.service.TeamService;
  */
 public class CrudTest {
     private static TeamService testTeam;
+    private static TeamService testTeamEx;
     private static Team crTeamek;
 
     @BeforeClass
@@ -48,4 +49,15 @@ public class CrudTest {
         Assert.assertEquals("Gumed", a.getName());
         Assert.assertEquals("Iliga", a.getLiga());
     }
+
+    @Test(expected = AssertionError.class)
+    public void verifyValidCreateException(){
+            testTeamEx = new TeamImpl();
+            Team b = testTeam.create(crTeamek);
+            Assert.assertEquals("aaaa", b.getName());
+
+
+    }
+
+
 }
