@@ -17,13 +17,14 @@ public class TeamImpl {
         this.team = team;
     }
 
-   public List<Team> findRecordsByRegex(String regexString) {
+    public List<Team> findRecordsByRegex(String regexString) {
         Pattern regex = Pattern.compile("(?sm)LABEL.*?(?=^LABEL|\\Z)");
         Matcher regexMatcher = regex.matcher(regexString);
         while (regexMatcher.find()) {
-}
-    return null;
+        }
+        return null;
     }
+
     public void deleteRecords(List<Team> ListObject) throws ExceptionRecord {
         for (Team a : ListObject) {
             team.delete(a);
