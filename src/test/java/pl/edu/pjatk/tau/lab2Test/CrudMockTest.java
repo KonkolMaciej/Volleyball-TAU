@@ -86,7 +86,7 @@ public class CrudMockTest {
         assertEquals(1, teams.size());
 
         teams = service.findRecordsByRegex("Fs*s");
-        assertNotNull(teams);
+
         assertEquals(0, teams.size());
         verify(mockedTeam, times(2)).list();
     }

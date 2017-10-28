@@ -15,12 +15,19 @@ public class TeamImpl {
     private TeamService team;
 
     public void setDataSource(TeamService team) {
+
         this.team = team;
+    }
+
+
+    public void deleteRecords(List<Team> Objects) throws ExceptionRecord {
+        for (Team a : Objects) {
+            team.delete(a);
+        }
     }
 
     Pattern pattern = Pattern.compile("(\\[)(.*?)(\\])");
     private CharSequence string;
-   // Matcher matcher = pattern.matcher(string);
 
     public List<Team> findRecordsByRegex(String regexString) {
         List<Team> list = team.list();
@@ -35,11 +42,6 @@ public class TeamImpl {
         return listMatches;
     }
 
-    public void deleteRecords(List<Team> ListObject) throws ExceptionRecord {
-        for (Team a : ListObject) {
-            team.delete(a);
-        }
-    }
 
 }
 
