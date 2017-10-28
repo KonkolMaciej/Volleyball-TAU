@@ -2,8 +2,9 @@ package pl.edu.pjatk.tau.lab2.service;
 
 import pl.edu.pjatk.tau.lab2.models.Team;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -17,12 +18,21 @@ public class TeamImpl {
         this.team = team;
     }
 
+    Pattern pattern = Pattern.compile("(\\[)(.*?)(\\])");
+    private CharSequence string;
+   // Matcher matcher = pattern.matcher(string);
+
     public List<Team> findRecordsByRegex(String regexString) {
-        Pattern regex = Pattern.compile("(?sm)LABEL.*?(?=^LABEL|\\Z)");
-        Matcher regexMatcher = regex.matcher(regexString);
-        while (regexMatcher.find()) {
+        List<Team> list = team.list();
+        List<Team> listMatches = new ArrayList<>();
+
+        for (Iterator<Team> teamIterator = list.iterator(); teamIterator.hasNext(); ) {
+            Team a = teamIterator.next();
+            if (a.getName().matches(regexString)) {
+                listMatches.add(a);
+            }
         }
-        return null;
+        return listMatches;
     }
 
     public void deleteRecords(List<Team> ListObject) throws ExceptionRecord {
