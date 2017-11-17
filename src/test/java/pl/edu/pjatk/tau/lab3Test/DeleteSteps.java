@@ -22,7 +22,7 @@ public class DeleteSteps {
     private TeamImpl service = new TeamImpl();
     private Team testTeam = new Team(1, "Tapla", "Kudawa", "Iliga");
     private Team testTeam2 = new Team(2, "apla", "Gdynia", "Iliga");
-    private Team testTeam3 = new Team(3, "jablka", "Gdynia", "Iliga");
+
     static List<Team> listTeams = new ArrayList<Team>();
     @Mock
     static TeamService mockedTeam;
