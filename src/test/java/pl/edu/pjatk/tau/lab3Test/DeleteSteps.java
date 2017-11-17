@@ -5,9 +5,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Before;
 import org.mockito.Mock;
-import pl.edu.pjatk.tau.lab3.models.Team;
-import pl.edu.pjatk.tau.lab3.serviceo.TeamImpl;
-import pl.edu.pjatk.tau.lab3.serviceo.TeamService;
+import pl.edu.pjatk.tau.lab2.models.Team;
+import pl.edu.pjatk.tau.lab2.service.TeamImpl;
+import pl.edu.pjatk.tau.lab2.service.TeamService;
 
 import java.util.ArrayList;
 import java.util.List;
