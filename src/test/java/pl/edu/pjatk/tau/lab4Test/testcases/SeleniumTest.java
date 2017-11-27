@@ -1,6 +1,9 @@
 package pl.edu.pjatk.tau.lab4Test.testcases;
 
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -88,7 +91,7 @@ public class SeleniumTest {
     public void LoginPageFieldRegisterAccount(){
         driver.get("http://automationpractice.com/index.php");
         homePage.goToLoginPage();
-        loginPage.setEmailAddress("t2e1stEmail222@wp.pl");
+        loginPage.setEmailAddress(homePage.randomString(6)+"@wp.pl");
         loginPage.goToCreateAccountPage();
         createAccount.submitAccountClick();
 //        assertTrue(createAccount.CheckErrorsValidFields());
@@ -97,7 +100,7 @@ public class SeleniumTest {
     @Test
     public void RegisterAccount(){
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        loginPage.setEmailAddress("t2e1stEmail222@wp.pl");
+        loginPage.setEmailAddress(homePage.randomString(6)+"@wp.pl");
         loginPage.goToCreateAccountPage();
         createAccount.CheckGender("M");
         createAccount.SetName("Jan");
