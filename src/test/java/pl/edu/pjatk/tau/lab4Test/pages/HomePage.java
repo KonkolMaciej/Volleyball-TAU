@@ -3,6 +3,8 @@ package pl.edu.pjatk.tau.lab4Test.pages;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,12 +57,18 @@ public class HomePage {
         int x = Dresses.getLocation().getX();
         int y = Dresses.getLocation().getY();
         //Dresses.getLocation().moveBy(x,y);
+        Actions action = new Actions(driver);
+        action.moveToElement(Dresses).build().perform();
+
         if (driver instanceof TakesScreenshot) {
+            new Actions(driver).moveToElement(Dresses).build().perform();
+            WebElement element = (new WebDriverWait(driver, 10))
+                    .until(ExpectedConditions.elementToBeClickable(By.cssSelector("#block_top_menu > ul > li:nth-child(2) > ul")));
             File f = ((TakesScreenshot) driver).
                     getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(f,
                     new File("build/homePage1.png"));
-            new Actions(driver).moveToElement(Dresses).click();
+
         }
 
     }

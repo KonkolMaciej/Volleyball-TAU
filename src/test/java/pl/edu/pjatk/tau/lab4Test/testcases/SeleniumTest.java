@@ -18,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by maciek on 19.11.17.
  */
-public class SeleniumTests {
+public class SeleniumTest {
     private static WebDriver driver;
     private HomePage homePage;
     private LoginPage loginPage;
@@ -88,7 +88,7 @@ public class SeleniumTests {
     public void LoginPageFieldRegisterAccount(){
         driver.get("http://automationpractice.com/index.php");
         homePage.goToLoginPage();
-        loginPage.setEmailAddress("te1stEmail222@wp.pl");
+        loginPage.setEmailAddress("t2e1stEmail222@wp.pl");
         loginPage.goToCreateAccountPage();
         createAccount.submitAccountClick();
 //        assertTrue(createAccount.CheckErrorsValidFields());
@@ -97,7 +97,7 @@ public class SeleniumTests {
     @Test
     public void RegisterAccount(){
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
-        loginPage.setEmailAddress("te1stEmail222@wp.pl");
+        loginPage.setEmailAddress("t2e1stEmail222@wp.pl");
         loginPage.goToCreateAccountPage();
         createAccount.CheckGender("M");
         createAccount.SetName("Jan");
