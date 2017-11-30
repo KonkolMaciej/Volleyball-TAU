@@ -16,7 +16,7 @@ public class CreateAccountPage {
 
     }
     public boolean CheckErrorsValidFields(){
-        if(driver.findElement(By.className("//*[@id=\"center_column\"]/div")).isDisplayed())
+        if(driver.findElement(By.xpath("//*[@id=\"center_column\"]/div")).isDisplayed())
             return true;
         else
             return false;

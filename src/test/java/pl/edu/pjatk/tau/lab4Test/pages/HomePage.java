@@ -55,9 +55,6 @@ public class HomePage {
     public void goToDressesLocation() throws IOException {
         WebElement Dresses =
                 driver.findElement(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]"));
-        int x = Dresses.getLocation().getX();
-        int y = Dresses.getLocation().getY();
-        //Dresses.getLocation().moveBy(x,y);
         Actions action = new Actions(driver);
         action.moveToElement(Dresses).build().perform();
 

@@ -5,9 +5,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pl.edu.pjatk.tau.lab4Test.pages.CreateAccountPage;
 import pl.edu.pjatk.tau.lab4Test.pages.HomePage;
 import pl.edu.pjatk.tau.lab4Test.pages.LoginPage;
@@ -36,21 +39,22 @@ public class SeleniumTest {
     public static void driverSetup() {
       //  System.setProperty("webdriver.chrome.driver", "/Users/kuba/Dev/chromedriver/chromedriver");
 //        driver = new ChromeDriver();
-        System.setProperty("webdriver.gecko.driver", "/home/maciek/projekty/seleniumJava/geckodriver");
-        driver = new FirefoxDriver();
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setJavascriptEnabled(true);
-//        caps.setCapability("takesScreenshot", true);
-//        caps.setCapability(
-//                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-//                "/home/maciek/projekty/seleniumJava/phantomjs"
-//        );
-//        driver = new PhantomJSDriver(caps);
+//        System.setProperty("webdriver.gecko.driver", "/home/maciek/projekty/seleniumJava/geckodriver");
+//        driver = new FirefoxDriver();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setJavascriptEnabled(true);
+        caps.setCapability("takesScreenshot", true);
+        caps.setCapability(
+                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                "/home/maciek/projekty/seleniumJava/phantomjs"
+        );
+        driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Before
     public void before() {
+        driver.manage().window().setSize(new Dimension(1400,1000));
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         createAccount = new CreateAccountPage(driver);
@@ -94,7 +98,7 @@ public class SeleniumTest {
         loginPage.setEmailAddress(homePage.randomString(6)+"@wp.pl");
         loginPage.goToCreateAccountPage();
         createAccount.submitAccountClick();
-//        assertTrue(createAccount.CheckErrorsValidFields());
+        assertTrue(createAccount.CheckErrorsValidFields());
     }
 
     @Test
