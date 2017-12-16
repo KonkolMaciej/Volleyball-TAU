@@ -37,16 +37,12 @@ public class SeleniumTest {
     // 0123-456-789
     @BeforeClass
     public static void driverSetup() {
-      //  System.setProperty("webdriver.chrome.driver", "/Users/kuba/Dev/chromedriver/chromedriver");
-//        driver = new ChromeDriver();
-//        System.setProperty("webdriver.gecko.driver", "/home/maciek/projekty/seleniumJava/geckodriver");
-//        driver = new FirefoxDriver();
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(true);
         caps.setCapability("takesScreenshot", true);
         caps.setCapability(
                 PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                "/home/maciek/projekty/seleniumJava/phantomjs"
+                "src/test/java/pl/edu/pjatk/tau/lab5Test/phantomjs"
         );
         driver = new PhantomJSDriver(caps);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

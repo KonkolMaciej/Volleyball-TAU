@@ -8,7 +8,9 @@ import org.junit.AfterClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pl.edu.pjatk.tau.lab4Test.pages.CreateAccountPage;
 import pl.edu.pjatk.tau.lab4Test.pages.HomePage;
 import pl.edu.pjatk.tau.lab4Test.pages.LoginPage;
@@ -31,16 +33,16 @@ public class LogSteps {
     @Before
     public void setUp() {
 
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setJavascriptEnabled(true);
-//        caps.setCapability("takesScreenshot", true);
-//        caps.setCapability(
-//                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-//                "/home/maciek/projekty/seleniumJava/phantomjs"
-//        );
-//        driver = new PhantomJSDriver(caps);
-        System.setProperty("webdriver.chrome.driver", "/home/maciek/projekty/seleniumJava/chromedriver");
-        driver = new ChromeDriver();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setJavascriptEnabled(true);
+        caps.setCapability("takesScreenshot", true);
+        caps.setCapability(
+                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                "src/test/java/pl/edu/pjatk/tau/lab5Test/phantomjs"
+        );
+        driver = new PhantomJSDriver(caps);
+//        System.setProperty("webdriver.chrome.driver", "/home/maciek/projekty/seleniumJava/chromedriver");
+//        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(1400,1000));
         homePage = new HomePage(driver);

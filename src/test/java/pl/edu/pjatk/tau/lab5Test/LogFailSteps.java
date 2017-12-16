@@ -35,7 +35,7 @@ public class LogFailSteps {
             caps.setCapability("takesScreenshot", true);
             caps.setCapability(
                     PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-                    "/home/maciek/projekty/seleniumJava/phantomjs"
+                    "src/test/java/pl/edu/pjatk/tau/lab5Test/phantomjs"
             );
             driver = new PhantomJSDriver(caps);
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

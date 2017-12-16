@@ -4,9 +4,13 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pl.edu.pjatk.tau.lab4Test.pages.CreateAccountPage;
 import pl.edu.pjatk.tau.lab4Test.pages.HomePage;
 import pl.edu.pjatk.tau.lab4Test.pages.LoginPage;
@@ -28,18 +32,17 @@ public class RegSteps {
 
     @Before
     public void setUp() {
-//        DesiredCapabilities caps = new DesiredCapabilities();
-//        caps.setJavascriptEnabled(true);
-//        caps.setCapability("takesScreenshot", true);
-//        caps.setCapability(
-//                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-//                "/home/maciek/projekty/seleniumJava/phantomjs"
-//        );
-//        driver = new PhantomJSDriver(caps);
-
-//        driver.manage().window().setSize(new Dimension(1400,1000));
-        System.setProperty("webdriver.chrome.driver", "/home/maciek/projekty/seleniumJava/chromedriver");
-        driver = new ChromeDriver();
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setJavascriptEnabled(true);
+        caps.setCapability("takesScreenshot", true);
+        caps.setCapability(
+                PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                "src/test/java/pl/edu/pjatk/tau/lab5Test/phantomjs"
+        );
+        driver = new PhantomJSDriver(caps);
+        driver.manage().window().setSize(new Dimension(1400,1000));
+//        System.setProperty("webdriver.chrome.driver", "/home/maciek/projekty/seleniumJava/chromedriver");
+//        driver = new ChromeDriver();
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         createAcc = new CreateAccountPage(driver);
@@ -77,7 +80,7 @@ public class RegSteps {
 
     @Then("^account should be registered$")
     public void account_should_be_registered() throws Throwable {
-        driver.findElement(By.cssSelector("#header > div.nav > div > div > nav > div:nth-child(2) > a")).isDisplayed(); //sign out button
+        Assert.assertTrue(driver.findElement(By.cssSelector("#header > div.nav > div > div > nav > div:nth-child(2) > a")).isDisplayed()); //sign out button
         driver.findElement(By.cssSelector("#header > div.nav > div > div > nav > div:nth-child(2) > a")).click();
     }
 
