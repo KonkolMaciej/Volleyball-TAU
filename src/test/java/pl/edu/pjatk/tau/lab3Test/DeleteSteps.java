@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 
 public class DeleteSteps {
@@ -36,7 +35,7 @@ public class DeleteSteps {
 
     @Given("^I have a list with record$")
     public void i_have_a_list_with_record() throws Throwable {
-        assertNotNull(listTeams);
+        assertEquals(0, listTeams.size());
     }
 
     @When("^I delete it$")
